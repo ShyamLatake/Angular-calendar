@@ -1,0 +1,42 @@
+<div class="calendar-container">
+  <div class="calendar-header">
+    <button (click)="prev()">&lt;</button>
+    <span>{{ formatDate(currentDate, "MMMM yyyy") }}</span>
+    <button (click)="next()">&gt;</button>
+  </div>
+
+  <div class="calendar-view-switch">
+    <button (click)="setView('month')">Month</button>
+    <button (click)="setView('week')">Week</button>
+    <button (click)="setView('day')">Day</button>
+  </div>
+  
+  @if (viewMode === 'month') {
+  <div class="calendar-grid">
+    @for (day of daysInMonth; track $index) {
+    <div class="calendar-day" (click)="setView('day', day)">
+      {{ formatDate(day, "d") }}
+    </div>
+    }
+  </div>
+  } 
+  
+  <!-- @if (viewMode === 'week') {
+  <div class="week-grid">
+    @for (day of weekDays; track $index) {
+    <div class="week-day">
+      <div class="day-label">{{ formatDate(day, "EEEE d") }}</div>
+    </div>
+    }
+  </div>
+  } @if (viewMode === 'day') {
+  <div class="day-grid">
+    @for (hour of hoursInDay; track $index) {
+
+    <div class="day-hour">
+      {{ formatDate(hour, "HH:mm") }}
+    </div>
+    }
+  </div>
+  } -->
+</div>
